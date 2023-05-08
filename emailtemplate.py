@@ -8,7 +8,7 @@ class SendEmail:
     Please provide the smtp server for your email service.
     IMPORTANT!!! You will need environment variables set up in the following way:
     EMAIL_ADDRESS='your email address'
-    EMAIL_PASSWORD='your email password"""
+    EMAIL_PASSWORD='your email password'"""
     def __init__(self, smtp_server):
         self.email = environ["EMAIL_ADDRESS"]
         self.password = environ["EMAIL_PASSWORD"]
