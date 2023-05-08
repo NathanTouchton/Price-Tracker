@@ -1,7 +1,19 @@
-from pprint import pprint
+# from pprint import pprint
 from requests import get
 from bs4 import BeautifulSoup
 
-URL = "https://www.amazon.com/Corsair-Compatible-Installation-Multitasking-Compatibility/dp/B0B15DLTXJ/ref=sr_1_3?crid=344XB0EOM25GQ&keywords=gddr5%2Bsodimm&qid=1683562974&sprefix=gddr5%2Bsodimm%2Caps%2C103&sr=8-3&ufe=app_do%3Aamzn1.fos.f5122f16-c3e8-4386-bf32-63e904010ad0&th=1"
+URL = "https://drop.com/buy/massdrop-x-sennheiser-hd-58x-jubilee-headphones"
 
-response = get(url=URL)
+response = get(
+    url=URL,
+    timeout=10,
+    headers={
+        "User-Agent": "Mozilla/5.0 (X11; Linux x86_64; rv:109.0) Gecko/20100101 Firefox/112.0",
+        "Accept-Language": "en-US,en;q=0.5",
+        },
+    )
+soup = BeautifulSoup(response.text, "html.parser")
+
+price_text = soup.find(class_="wdio__price Text__text__PazWx Text__type--price__1mumP")
+
+print(price_text)
